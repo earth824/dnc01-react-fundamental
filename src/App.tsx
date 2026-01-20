@@ -43,9 +43,9 @@ function Counter() {
         // }}
         // STATE BATCH UPDATE
         onClick={() => {
-          setCount(0); // 5+1 !==> 6
+          // setCount(0); // 5+1 !==> 6
           setCount(count + 1); // 5+1 !==> 6
-          setCount(count + 1); // 5+1 !==> 6
+          // setCount(count + 1); // 5+1 !==> 6
           // const result = [];
           // setCount((prevCount) => {
           //   console.log(prevCount);
@@ -58,9 +58,9 @@ function Counter() {
           //   console.log(prevCount);
           //   return prevCount + 1;
           // }); // 6+1 ==> 7 (tempolary)
-          // setCount(0);
+          // setCount(1);
           // console.log(count);
-          setCount((prevCount) => prevCount + 1); // 7+1 ==> 8 (tempolary)
+          // setCount((prevCount) => prevCount + 1); // 7+1 ==> 8 (tempolary)
         }}
       >
         +
