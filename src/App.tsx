@@ -1,3 +1,4 @@
+import type { FormEvent, FormEventHandler } from 'react';
 import ProductCard from './ProductCard';
 
 type Product = {
@@ -27,30 +28,63 @@ const products: Product[] = [
 // transform array element (array map)
 
 export default function App() {
-  return (
-    <div className="flex gap-8">
-      {products.map((el) => (
-        <ProductCard
-          key={el.id}
-          name={el.name}
-          brand={el.brand}
-          price={el.price}
-          discount={el.discount}
-        />
-        // <ProductCard {...el} />
-      ))}
+  // const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  //   e.preventDefault();
+  //   // validate data in the form
+  //   // sent form data to web server
+  // };
 
-      {/* <ProductCard
-        name="NIKE Pegaus 41"
-        brand="NIKE"
-        price={5200}
-        discount={0.2}
-      />
-      <ProductCard
-        name="ON Running Cloudmonster 2"
-        brand="ONCLOUD"
-        price={7500}
-      /> */}
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  return (
+    // <div className="flex gap-8">
+    //   {products.map((el) => (
+    //     <ProductCard
+    //       key={el.id}
+    //       name={el.name}
+    //       brand={el.brand}
+    //       price={el.price}
+    //       discount={el.discount}
+    //     />
+    //     // <ProductCard {...el} />
+    //   ))}
+
+    //   {/* <ProductCard
+    //     name="NIKE Pegaus 41"
+    //     brand="NIKE"
+    //     price={5200}
+    //     discount={0.2}
+    //   />
+    //   <ProductCard
+    //     name="ON Running Cloudmonster 2"
+    //     brand="ONCLOUD"
+    //     price={7500}
+    //   /> */}
+    // </div>
+
+    <div>
+      {/* SINGLE RESPONSIBILITY */}
+      <form
+        action=""
+        method="get"
+        onSubmit={handleSubmit}
+        // onSubmit={(e) => {
+        //   e.preventDefault();
+        //   // vlaidate data in the form
+        //   // sent form data to web server
+        // }}
+      >
+        <input
+          type="text"
+          className="border px-3 py-1.5 rounded-md"
+          onChange={() => {}}
+        />
+        <button className="border px-4 py-2 bg-blue-500 text-white hover:cursor-pointer">
+          Submit Form
+        </button>
+      </form>
     </div>
   );
 }

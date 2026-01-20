@@ -27,6 +27,18 @@ export default function ProductCard({
         )} */}
         {netPrice}
       </div>
+      <button
+        className="px-4 py-2 rounded-md bg-blue-500 text-white"
+        onClick={() => {
+          console.log('clickkkkkkkkkkkkk');
+        }}
+      >
+        Click
+      </button>
     </div>
   );
 }
+// const b = document.querySelector('button');
+// b?.addEventListener('click', function () {
+//   console.log('Clickkkkkkkk');
+// });
