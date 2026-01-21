@@ -74,7 +74,7 @@ function App() {
               className="p-4 flex justify-between gap-4 items-center"
               key={el.id}
             >
-              {editingId ? (
+              {editingId === el.id ? (
                 <input
                   type="text"
                   className="w-full h-9 px-3 rounded-md border border-gray-400 outline-none"
@@ -87,7 +87,7 @@ function App() {
                 </span>
               )}
               <div className="flex gap-2">
-                {editingId ? (
+                {editingId === el.id ? (
                   <>
                     <button
                       className="bg-blue-500 text-white px-4 py-2 h-9 rounded-md text-sm"
