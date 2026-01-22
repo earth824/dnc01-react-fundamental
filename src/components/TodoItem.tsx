@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import type { Todo } from '../types/todo';
+import type { DeleteTodo, Todo, UpdateTodo } from '../types/todo';
 import TodoContent from './TodoContent';
 import EditTodoForm from './EditTodoForm';
 
 type TodoItemProps = Todo & {
-  deleteTodo: (id: Todo['id']) => void;
-  updateTodo: (id: Todo['id'], title: string) => void;
+  deleteTodo: DeleteTodo;
+  updateTodo: UpdateTodo;
 };
 // type TodoItemProps = {
 //   todo: Todo;

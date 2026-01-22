@@ -1,25 +1,28 @@
 import { useState } from 'react';
 import CreateTodoForm from './components/CreateTodoForm';
 import TodoItem from './components/TodoItem';
-import type { Todo } from './types/todo';
+import type { CreateTodo, DeleteTodo, UpdateTodo, Todo } from './types/todo';
 
 // const mockTodos: Todo[] = [{ id: crypto.randomUUID(), title: 'Read a book' }];
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const createTodo = (title: string): void => {
+  const createTodo: CreateTodo = (title) => {
     const newTodo: Todo = { id: crypto.randomUUID(), title };
     const nextTodos = [...todos, newTodo];
     setTodos(nextTodos);
   };
 
-  const deleteTodo = (id: Todo['id']): void => {
+  const deleteTodo: DeleteTodo = (id) => {
     const nextTodos = todos.filter((todo) => todo.id !== id);
     setTodos(nextTodos);
   };
 
-  const updateTodo = (id: Todo['id'], title: string): void => {};
+  const updateTodo: UpdateTodo = (id, title) => {
+    const nextTodos = todos.map((el) => (el.id === id ? { ...el, title } : el));
+    setTodos(nextTodos);
+  };
 
   return (
     <div className="max-w-5xl mx-auto">

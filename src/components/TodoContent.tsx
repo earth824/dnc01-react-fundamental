@@ -1,8 +1,8 @@
-import type { Todo } from '../types/todo';
+import type { DeleteTodo, Todo } from '../types/todo';
 import Button from './Button';
 
 type TodoContentProps = Todo & {
-  deleteTodo: (id: Todo['id']) => void;
+  deleteTodo: DeleteTodo;
   toggleEditing: () => void;
 };
 

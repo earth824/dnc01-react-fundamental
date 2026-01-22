@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
+import type { CreateTodo } from '../types/todo';
 
 type CreateTodoFormProps = {
-  createTodo: (title: string) => void;
+  createTodo: CreateTodo;
   // setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 };
 
