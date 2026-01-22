@@ -6,7 +6,10 @@ type ButtonProps = ComponentProps<'button'>;
 export default function Button({ children, className, ...props }: ButtonProps) {
   return (
     <button
-      className={cn('bg-gray-200 px-4 py-2 h-9 rounded-md text-sm', className)}
+      className={cn(
+        'bg-gray-200 px-4 py-2 h-9 rounded-md text-sm disabled:opacity-80',
+        className
+      )}
       {...props}
       // onClick: () => { console.log('click')}
       // id: 'abcd'

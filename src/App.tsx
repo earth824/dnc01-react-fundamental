@@ -7,15 +7,24 @@ import type { Todo } from './types/todo';
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  const createTodo = (title: string): void => {
+    const newTodo: Todo = { id: crypto.randomUUID(), title };
+    const nextTodos = [...todos, newTodo];
+    setTodos(nextTodos);
+  };
+
+  const deleteTodo = (id: Todo['id']): void => {};
+
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex flex-col gap-6 p-8">
         <div className="flex gap-4">
-          <CreateTodoForm />
+          <CreateTodoForm createTodo={createTodo} />
         </div>
         <div className="border-y border-gray-400 divide-y divide-gray-400">
           {todos.map((todo) => (
-            <TodoItem key={todo.id} {...todo} />
+            <TodoItem key={todo.id} {...todo} deleteTodo={deleteTodo} />
           ))}
         </div>
       </div>

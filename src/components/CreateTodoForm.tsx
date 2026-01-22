@@ -1,14 +1,27 @@
+import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 
-export default function CreateTodoForm() {
+type CreateTodoFormProps = {
+  createTodo: (title: string) => void;
+  // setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+};
+
+export default function CreateTodoForm({ createTodo }: CreateTodoFormProps) {
+  const [titleInput, setTitleInput] = useState('');
+
   return (
     <>
-      <Input />
+      <Input
+        value={titleInput}
+        onChange={(e) => setTitleInput(e.target.value)}
+      />
       <Button
         onClick={() => {
-          console.log('click');
+          createTodo(titleInput);
+          setTitleInput('');
         }}
+        disabled={titleInput.trim() === ''}
       >
         Save
       </Button>
