@@ -14,7 +14,12 @@ function App() {
     setTodos(nextTodos);
   };
 
-  const deleteTodo = (id: Todo['id']): void => {};
+  const deleteTodo = (id: Todo['id']): void => {
+    const nextTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(nextTodos);
+  };
+
+  const updateTodo = (id: Todo['id'], title: string): void => {};
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -24,7 +29,12 @@ function App() {
         </div>
         <div className="border-y border-gray-400 divide-y divide-gray-400">
           {todos.map((todo) => (
-            <TodoItem key={todo.id} {...todo} deleteTodo={deleteTodo} />
+            <TodoItem
+              key={todo.id}
+              {...todo}
+              deleteTodo={deleteTodo}
+              updateTodo={updateTodo}
+            />
           ))}
         </div>
       </div>

@@ -1,26 +1,30 @@
+import { useState } from 'react';
 import type { Todo } from '../types/todo';
-import Button from './Button';
+import TodoContent from './TodoContent';
+import EditTodoForm from './EditTodoForm';
 
 type TodoItemProps = Todo & {
   deleteTodo: (id: Todo['id']) => void;
+  updateTodo: (id: Todo['id'], title: string) => void;
 };
 // type TodoItemProps = {
 //   todo: Todo;
 // };
 
-export default function TodoItem({ id, title, deleteTodo }: TodoItemProps) {
+export default function TodoItem(props: TodoItemProps) {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const toggleEditing = (): void => {
+    setIsEditing(!isEditing);
+  };
+
   return (
-    <div className="p-4 flex justify-between items-center">
-      <span>{title}</span>
-      <div className="flex gap-2">
-        <Button className="bg-blue-500 text-white">Edit</Button>
-        <Button
-          className="bg-red-500 text-white"
-          onClick={() => deleteTodo(id)}
-        >
-          Delete
-        </Button>
-      </div>
+    <div className="p-4 flex justify-between items-center gap-4">
+      {isEditing ? (
+        <EditTodoForm toggleEditing={toggleEditing} {...props} />
+      ) : (
+        <TodoContent {...props} toggleEditing={toggleEditing} />
+      )}
     </div>
   );
 }
